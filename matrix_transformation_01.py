@@ -4,7 +4,7 @@ import math
 
 # GLOBAL CONSTANTS
 S = 800
-U = 40
+U = 80
 
 ROOT = tk.Tk()
 CANVAS = tk.Canvas(ROOT, width=S, height=S, background="black")
@@ -25,6 +25,10 @@ class Base_system():
         self.__m_tot = matrix_mult(self.__base, self.__trans_matrix)
             # WHAT?? It seems that I have to calculate the total matrix as base matrix * transformation matrix and not the other way around
         self.__standard = self.__base == I
+    
+    def line(self, n):
+        if abs(n[0])>abs(n[1]):
+            n = [n[0]*1/n[1], 1]
     
     def X_base(self, x, y):
         return x*self.__base[0][0]+y*self.__base[0][1]
@@ -101,19 +105,22 @@ def matrix_mult(a, b):
 
 
 # MAIN
-standard = Base_system()
+standard = Base_system(I, [
+    [-3/5, 4/5],
+    [4/5, 3/5]])
 standard.base_coordinate_system()
+#standard.transformed_coordinate_system()
 
 
 beta = Base_system([
-     [1, 2],
-     [2, 1]
+    [1/math.sqrt(5), -2/math.sqrt(5)],
+    [2/math.sqrt(5), 1/math.sqrt(5)]
     ], [
-     [0, -1],
-     [2, 0]
+     [1, 0],
+     [0, 1]
         ])
 beta.base_coordinate_system()
-beta.vec(1,1)
+
 
 
 ROOT.mainloop()
