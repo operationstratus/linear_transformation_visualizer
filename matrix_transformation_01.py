@@ -106,21 +106,23 @@ def matrix_mult(a, b):
 
 # MAIN
 standard = Base_system(I, [
-    [-3/5, 4/5],
-    [4/5, 3/5]])
+    [2, 1],
+    [3, 1]
+                       ])
 standard.base_coordinate_system()
-#standard.transformed_coordinate_system()
+standard.transformed_coordinate_system()
+standard.vec(1,1)
 
-
+'''
 beta = Base_system([
-    [1/math.sqrt(5), -2/math.sqrt(5)],
-    [2/math.sqrt(5), 1/math.sqrt(5)]
+    [1,0],
+    [0,1]
     ], [
      [1, 0],
      [0, 1]
         ])
 beta.base_coordinate_system()
-
+'''
 
 
 ROOT.mainloop()
